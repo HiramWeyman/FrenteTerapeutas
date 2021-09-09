@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../assets/css/login.css">
+
+<h2 mat-dialog-title>Subir Archivo</h2>
+
+<div class="container">
+    <form>
+        <div class="col-lg-12">
+            <div class="mb-3">
+                <input class="form-control" type="file" id="formFile" 
+                (change)="seleccionarFoto($event);"
+                accept=".jpg, .jpeg, .pdf, .doc, .docx">
+              </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeDialog();">Cerrar</button>
+            <button type="button" class="btn btn-blue" (click)="editarFoto();" data-dismiss="modal">Subir Archivo</button>
+          </div>
+    </form>
+</div>

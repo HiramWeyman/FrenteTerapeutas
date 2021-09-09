@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Ajustes Sociales</h2>
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field>
+        <mat-label>1.Primeras nociones acerca del sexo</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desarrollo.pac_desarrollo_nociones"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Primer contacto sexual</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desarrollo.pac_desarrollo_contacto"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Evolución del interes sexual</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desarrollo.pac_desarrollo_interes"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Masturbación, sueños y fantasías sexuales</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desarrollo.pac_desarrollo_fantasias"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>5.Homosexualidad</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desarrollo.pac_desarrollo_homosex"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>6.Relaciones premaritales, maritales y extramarital</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desarrollo.pac_desarrollo_relaciones"></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_desarrollo.pac_desarrollo_id" (click)="GuardaDesarrollo(pac_desarrollo)">Guardar desarrollo sexual del paciente</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_desarrollo.pac_desarrollo_id" (click)="ActualizaDesarrollo(pac_desarrollo.pac_desarrollo_id,pac_desarrollo)">Actualizar desarrollo sexual del paciente</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_desarrollo.pac_desarrollo_id" (click)="EliminaDesarrollo(pac_desarrollo.pac_desarrollo_id,pac_desarrollo)">Eliminar desarrollo sexual del paciente</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

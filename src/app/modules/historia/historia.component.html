@@ -1,0 +1,73 @@
+<div class="row text-center">
+    <h2 mat-dialog-title>Historia Personal</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+ 
+    <mat-form-field>
+        <mat-label>1.Embarazo y nacimiento</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_embarazo"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Inició marcha, habla, control de esfínteres</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_inicio"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Infancia; habitos, alimentación, etc.</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_infancia"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Niñez; relaciones sociales, temores, etc.</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_nines_re"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>5.Adolecencia; problemas, relaciones interpersonales </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_adolecencia"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>6.Edad adulta; logros, satisfacciones, etc. </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_edad_ad"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>7.Edad avanzada; abandono de los hijos, temor a la muerte </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_edad_av"></textarea>
+    </mat-form-field><br>
+    
+    <mat-form-field>
+        <mat-label>8.Alimentación</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_alimentacion"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>9.Sueño</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_sueno"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>10.Enfermedades</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_enfermedades"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>11.Lesiones, Operaciones</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_lesiones"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>12.Opinión de salud actual</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_historia.pac_hist_salud_act"></textarea>
+    </mat-form-field><br>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_historia.pac_hist_id" (click)="GuardaHistoria(pac_historia)">Guardar Historia Personal</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_historia.pac_hist_id" (click)="ActualizaHistoria(pac_historia.pac_hist_id,pac_historia)">Actualizar Historia Personal</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_historia.pac_hist_id" (click)="EliminaHistoria(pac_historia.pac_hist_id,pac_historia)">Eliminar Historia Personal</button>
+    <button mat-button  routerLink="/pacientes">Cancelar</button>
+</div><br><br>

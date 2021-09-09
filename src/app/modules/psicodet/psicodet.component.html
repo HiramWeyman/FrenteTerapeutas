@@ -1,0 +1,36 @@
+<h2 mat-dialog-title><p>{{pac_psicoterapia.pac_psico_desc}}</p></h2><br>
+<mat-form-field>
+    <mat-label>Diagnóstico o descripción del problema</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psicoterapia.pac_psico_texto"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Objetivo de intervención</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psicoterapia.pac_psico_intervencion"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Técnicas o procedimiento de intervención</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psicoterapia.pac_psico_tecnicas"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Resultados</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psicoterapia.pac_psico_resultados"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Recomendaciones</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psicoterapia.pac_psico_recomenda"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Obsrvaciones</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psicoterapia.pac_psico_observaciones"></textarea>
+</mat-form-field>
+<!-- <mat-dialog-content class="mat-typography">
+
+    <mat-form-field>
+        <mat-label>Descripción</mat-label>
+        <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psicoterapia.pac_psico_texto" ></textarea>
+    </mat-form-field><br>
+</mat-dialog-content> -->
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>
+

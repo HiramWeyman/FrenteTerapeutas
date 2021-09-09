@@ -1,0 +1,30 @@
+<ng-container>
+    <div class="container text-center">
+        <mat-form-field >
+            <mat-label>Filtrar por Diagnostico</mat-label>
+            <mat-select [(ngModel)]="diagnostico" (selectionChange)="Pacientes($event.value);PacientesCount($event.value)" >
+                <mat-option *ngFor="let diag of pac_diag_prim" [value]="diag.diag_id">
+                  {{diag.diag_descrip}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <table>
+          <caption>Lista de Pacientes Diagnosticados</caption>
+          <caption>Cantidad de pacientes diagnosticados: {{this.pacientecount}}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Pacientes</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let usr of paciente">
+                <td data-label="Nombre Completo">{{ usr.paciente_nombre}}</td> 
+            </tr>
+          </tbody>
+        </table>
+      
+   
+      
+      </div>
+  </ng-container>
+

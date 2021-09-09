@@ -1,0 +1,55 @@
+<div class="row text-center">
+    <h2 mat-dialog-title>Escolaridad</h2>
+</div>
+<div class="row" >
+    <h2 mat-dialog-title>Escuelas a las que asistió</h2>
+    <table> 
+        <tr>
+            <td style="width: 10%;">Primaria</td><td><input [(ngModel)]="pac_escolar.pac_escolaridad_primaria" type="text" ></td>
+        </tr>
+        <tr>
+            <td style="width: 10%;">Secundaria</td><td><input  [(ngModel)]="pac_escolar.pac_escolaridad_secundaria" type="text" ></td>
+        </tr>
+        <tr>
+            <td style="width: 10%;">Preparatoria</td><td><input [(ngModel)]="pac_escolar.pac_escolaridad_preparatoria" type="text" ></td>
+        </tr>
+        <tr>
+            <td style="width: 10%;">Universidad</td><td><input  [(ngModel)]="pac_escolar.pac_escolaridad_universidad" type="text" ></td>
+        </tr>
+        <tr>
+            <td style="width: 10%;">Otras</td><td><input  [(ngModel)]="pac_escolar.pac_escolaridad_otras" type="text" ></td>
+        </tr>
+
+    </table>
+</div><br>
+<mat-dialog-content class="mat-typography">
+ 
+    <mat-form-field>
+        <mat-label>1.Relación con lo maestros y compañeros</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_escolar.pac_escolaridad_relacion"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Rendimiento escolar</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_escolar.pac_escolaridad_rendimiento"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Cambios de escuela</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_escolar.pac_escolaridad_cambios"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Evaluacion personal de vida escolar</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_escolar.pac_escolaridad_evaluacion"></textarea>
+    </mat-form-field><br>
+
+   
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_escolar.pac_escolaridad_id" (click)="GuardaEscolar(pac_escolar)">Guardar Escolaridad</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_escolar.pac_escolaridad_id" (click)="ActualizaEscolar(pac_escolar.pac_escolaridad_id,pac_escolar)">Actualizar Escolaridad</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_escolar.pac_escolaridad_id" (click)="EliminaEscolar(pac_escolar.pac_escolaridad_id,pac_escolar)">Eliminar Escolaridad</button>
+    <button mat-button  routerLink="/pacientes">Cancelar</button>
+</div><br><br>

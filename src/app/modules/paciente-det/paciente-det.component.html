@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>Detalle del Paciente</h2>
+<mat-dialog-content class="mat-typography">
+ 
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_nombre" type="text" placeholder="Nombre Completo" readonly>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <input matInput [(ngModel)]="paciente.paciente_direccion" type="text" placeholder="Dirección o Domicilio" readonly>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="paciente.paciente_ocupacion" type="text" placeholder="Ocupación" readonly>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_fec_nac" type="date" placeholder="Fecha de nacimiento" readonly>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_fec_ing" type="date" placeholder="Fecha de ingreso" readonly>
+    </mat-form-field><br>
+
+   <mat-form-field>
+    <input matInput [(ngModel)]="paciente.sexo_descrip" type="text" placeholder="Género" readonly>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_edad" type="number" placeholder="Edad" readonly>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="paciente.edocivil_descrip" type="text" placeholder="Estado civil" readonly>
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="paciente.paciente_telefono" type="text" placeholder="Teléfono o celular" readonly>
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="paciente.paciente_telefono_eme" type="text" placeholder="Teléfono en caso de emergencia" readonly>
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="paciente.escolar_descrip" type="text" placeholder="Escolaridad" readonly>
+</mat-form-field><br>
+
+<mat-form-field>
+    <input matInput [(ngModel)]="paciente.desc_edo" type="text" placeholder="Estado de nacimiento" readonly>
+</mat-form-field><br>
+<!-- (change)="Municipios($event.value)" -->
+<mat-form-field>
+    <input matInput [(ngModel)]="paciente.desc_mun" type="text" placeholder="Municipio de nacimiento" readonly>
+</mat-form-field><br>
+
+<mat-form-field>
+  <input matInput [(ngModel)]="paciente.estado_res" type="text" placeholder="Estado de residencia" readonly>
+</mat-form-field><br>
+<!-- (change)="Municipios($event.value)" -->
+<mat-form-field>
+  <input matInput [(ngModel)]="paciente.municipio_res" type="text" placeholder="Municipio de residencia" readonly>
+</mat-form-field><br>
+
+<mat-form-field>
+    <input matInput [(ngModel)]="paciente.modalidad_descrip" type="text" placeholder="Modalidad" readonly>
+</mat-form-field><br>
+
+<mat-form-field>
+    <input matInput [(ngModel)]="paciente.estatus_descrip" type="text" placeholder="Estatus" readonly>
+</mat-form-field><br>
+
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+<!--     <button mat-button  mat-flat-button color="primary" (click)="ActualizaPaciente(paciente)">Actualizar Paciente</button>
+ -->    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>
+
+
+

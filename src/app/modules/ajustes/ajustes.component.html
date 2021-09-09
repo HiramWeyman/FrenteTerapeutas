@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Ajustes Sociales</h2>
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field>
+        <mat-label>1.Relaciones interpersonales</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_ajustes.pac_ajustes_relacionesint"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Amistades:(Hombres-Mujeres)</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_ajustes.pac_ajustes_amistades"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Su sentir respecto a sus amistades</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_ajustes.pac_ajustes_sentir"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Novios(as),(cuantos y como fue la relación)</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_ajustes.pac_ajustes_novias"></textarea>
+    </mat-form-field><br>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_ajustes.pac_ajustes_id" (click)="GuardaAjustes(pac_ajustes)">Guardar ajustes sociales del paciente</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_ajustes.pac_ajustes_id" (click)="ActualizaAjustes(pac_ajustes.pac_ajustes_id,pac_ajustes)">Actualizar ajustes sociales del paciente</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_ajustes.pac_ajustes_id" (click)="EliminaAjustes(pac_ajustes.pac_ajustes_id,pac_ajustes)">Eliminar ajustes sociales del paciente</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

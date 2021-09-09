@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Ingresar resultado de método de evaluación</h2>
+<mat-dialog-content class="mat-typography">
+   <!--  [(ngModel)]="pac_recuerdo.pac_recuerdos_temp" -->
+    <mat-form-field>
+        <mat-label>Resultado de método de evaluación</mat-label>
+        <textarea  matInput rows="10" cols="40" [(ngModel)]="resultado.evaluacion_resultado1"></textarea>
+        <input matInput type="text"  [(ngModel)]="resultado.evaluacion_id"  [hidden]="true" >
+    </mat-form-field><br>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!resultado.evaluacion_id" (click)="GuardarResultado(resultado)">Guardar resultado</button>
+    <button mat-button  mat-flat-button color="primary"  *ngIf="resultado.evaluacion_id" (click)="ActualizaResultado(resultado.evaluacion_id,resultado)" >Actualizar resultado</button>
+    <button mat-button  mat-flat-button color="warn"   *ngIf="resultado.evaluacion_id" (click)="EliminaResultado(resultado.evaluacion_id,resultado)">Eliminar resultado</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

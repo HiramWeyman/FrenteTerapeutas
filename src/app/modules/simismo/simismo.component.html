@@ -1,0 +1,54 @@
+<div class="row text-center">
+    <h2 mat-dialog-title>Descripción de sí mismo</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+ 
+    <mat-form-field>
+        <mat-label>1.Como se ve desde afuera</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_comoseve"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Como cree que lo ven los demas</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_comocree"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Preocupaciones, dudas, etc.</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_preocupaciones"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Metas</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_metas"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>5.Cómo le gustaría haber sido </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_gustaria"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>6.Las crisis más importantes</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_crisis"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>7.Descripción de un triunfo y un fracaso </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_triunfo_frac"></textarea>
+    </mat-form-field><br>
+    
+    <mat-form-field>
+        <mat-label>8.Como se siente ante sus problemas</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_simismo.pac_simismo_siente_problem"></textarea>
+    </mat-form-field><br>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_simismo.pac_simismo_id" (click)="GuardaSimismo(pac_simismo)">Guardar Descripción de Sí Mismo</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_simismo.pac_simismo_id" (click)="ActualizaSimismo(pac_simismo.pac_simismo_id,pac_simismo)">Actualizar Descripción de Sí Mismo</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_simismo.pac_simismo_id" (click)="EliminaSimismo(pac_simismo.pac_simismo_id,pac_simismo)">Eliminar Descripción de Sí Mismo</button>
+    <button mat-button  routerLink="/pacientes">Cancelar</button>
+</div><br><br>

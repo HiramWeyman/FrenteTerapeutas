@@ -1,0 +1,49 @@
+<div class="row text-center">
+    <h2 mat-dialog-title>Datos Maritales</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+ 
+    <mat-form-field>
+        <mat-label>1.Noviazgo</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_marital.pac_maritales_noviazgo"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Expectativas de noviazgo</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_marital.pac_maritales_expnoviazgo"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Descripción del cónyuge</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_marital.pac_maritales_desc_conyuge"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Eventos importantes</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_marital.pac_maritales_eventos"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>5.Número de hijos, preferencias </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_marital.pac_maritales_numhijos"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>6.Interacción de la familia actual</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_marital.pac_maritales_interaccion"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>7.Cómo se siente respecto a su familia </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_marital.pac_maritales_familia"></textarea>
+    </mat-form-field><br>
+    
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_marital.pac_maritales_id" (click)="GuardaMaritales(pac_marital)">Guardar Datos Maritales</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_marital.pac_maritales_id" (click)="ActualizaMaritales(pac_marital.pac_maritales_id,pac_marital)">Actualizar Datos Maritales</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_marital.pac_maritales_id" (click)="EliminaMaritales(pac_marital.pac_maritales_id,pac_marital)">Eliminar Datos Maritales</button>
+    <button mat-button  routerLink="/pacientes">Cancelar</button>
+</div><br><br>

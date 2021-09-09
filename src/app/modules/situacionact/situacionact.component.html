@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Situación actual del paciente</h2>
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field>
+        <mat-label>1.Día común y corriente</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_situacion.pac_situacion_dia"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Ocaciones especiales</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_situacion.pac_situacion_esp"></textarea>
+        <input matInput type="text"  [(ngModel)]="pac_situacion.pac_situacion_id"  [hidden]="true" >
+    </mat-form-field><br>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_situacion.pac_situacion_id" (click)="GuardaSituacion(pac_situacion)">Guardar situación actual del paciente</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_situacion.pac_situacion_id" (click)="ActualizaSituacion(pac_situacion.pac_situacion_id,pac_situacion)">Actualizar situación actual del paciente</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_situacion.pac_situacion_id" (click)="EliminarSituacion(pac_situacion.pac_situacion_id,pac_situacion)">Eliminar situación actual del paciente</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

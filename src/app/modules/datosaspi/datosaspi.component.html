@@ -1,0 +1,413 @@
+<block-ui>
+    <link rel="stylesheet" href="../../../assets/css/login.css">
+    
+
+   <form class="row" [formGroup]="forma" (ngSubmit)="Guardar()" (keydown.enter)="$event.preventDefault()">
+    <div class="alert alert-dark" role="alert">
+        <h3>Registro de Aspirante</h3>
+
+        <ng-container>
+            <div class="mb-3">
+                <label for="aspi_numconvo" class="form-label">Facultad:</label><br>
+                <select id="aspi_ures" class="form-control" (change)="Convocatorias($event.target.value)"   >
+                    <option selected="selected" value="0">-- Seleccione una facultad--</option>
+                    <option *ngFor="let fc of ures" value="{{ fc.ures_ures}}">{{fc.ures_descrip}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="aspi_numconvo" class="form-label">Convocatoria:</label><br>
+                <small *ngIf="ConvNovalido" class="text-danger" style="color: red;">
+                    Ingrese una convocatoria
+                </small>
+                <select id="aspi_numconvo" class="form-control" formControlName="aspi_numconvo" [class.is-invalid]="ConvNovalido" required>
+                    <option selected="selected" value="">-- Seleccione una convocatoria--</option>
+                    <option *ngFor="let cv of convocatorias" value="{{ cv.conv_id}}">{{cv.conv_descrip}}</option>
+                </select><br>
+            </div>
+            <div class="mb-3">
+                <label for="aspi_nombre" class="form-label">Nombre:</label><br>
+                <small *ngIf="NombreNovalido" class="text-danger" style="color: red;">
+                    Ingrese nombre
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="35" 
+                formControlName="aspi_nombre" 
+                autocomplete="off" 
+                [class.is-invalid]="NombreNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_paterno" class="form-label">Apellido Paterno:</label><br>
+                <small *ngIf="PaternoNovalido" class="text-danger" style="color: red;">
+                    Ingrese apellido paterno
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="30" 
+                formControlName="aspi_paterno" 
+                autocomplete="off" 
+                [class.is-invalid]="PaternoNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_materno" class="form-label">Apellido Materno:</label><br>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="30" 
+                formControlName="aspi_materno" 
+                autocomplete="off" 
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_fnacimiento" class="form-label">Fecha de nacimiento:</label><br>
+                <small *ngIf="FnacNovalido" class="text-danger" style="color: red;">
+                    Ingrese una fecha de nacimiento
+                </small>
+                <input type="date" 
+                class="form-control" 
+                style="width: 70%"
+                formControlName="aspi_fnacimiento"
+                [class.is-invalid]="FnacNovalido"
+                >
+            </div>
+            <div class="mb-3">
+                <label for="aspi_genero" class="form-label">Género:</label><br><br>
+                <div class="form-check">
+                    <small *ngIf="GeneroNovalido" class="text-danger" style="color: red;">
+                        Seleccione una opción
+                    </small>
+                    <input class="form-check-input" type="radio" name="aspi_genero" id="aspi_genero" formControlName="aspi_genero" value="M" [class.is-invalid]="GeneroNovalido">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Masculino
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="aspi_genero" id="aspi_genero2"  formControlName="aspi_genero" value="F" [class.is-invalid]="GeneroNovalido">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Femenino
+                    </label>
+                  </div>
+            </div><br>
+            <div class="mb-3">
+                <label for="aspi_curp" class="form-label">CURP:</label><br>
+                <small *ngIf="CurpNovalido" class="text-danger" style="color: red;">
+                    Ingrese CURP
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="18" 
+                formControlName="aspi_curp" 
+                [class.is-invalid]="CurpNovalido"
+                autocomplete="off"  
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_correo" class="form-label">Correo:</label><br>
+                <small *ngIf="CorreoNovalido" class="text-danger" style="color: red;">
+                    Ingrese correo
+                </small>
+                <input type="email" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="50" 
+                formControlName="aspi_correo" 
+                [class.is-invalid]="CorreoNovalido"
+                autocomplete="off"         
+                >
+            </div>
+            <div class="mb-3">
+                <label for="aspi_rfc" class="form-label">RFC:</label><br>
+                <small *ngIf="RfcNovalido" class="text-danger" style="color: red;">
+                    Ingrese RFC
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="13" 
+                formControlName="aspi_rfc" 
+                autocomplete="off" 
+                [class.is-invalid]="RfcNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_ecivil" class="form-label">Estado civil:</label><br>
+                <small *ngIf="CivilNovalido" class="text-danger" style="color: red;">
+                    Ingrese un estado civil
+                </small>
+                <select id="aspi_ecivil" class="form-control" formControlName="aspi_ecivil" [class.is-invalid]="CivilNovalido">
+                    <option selected="selected" value="">-- Seleccione un estado civil --</option>
+                    <option selected="selected" value="SOLTERO">SOLTERO</option>
+                    <option selected="selected" value="CASADO">CASADO</option>
+                    <option selected="selected" value="VIUDO">VIUDO</option>
+                </select>  
+            </div>
+            <div class="mb-3">
+                <label for="aspi_nacionalidad" class="form-label">Nacionalidad:</label><br><br>
+                <div class="form-check">
+                    <small *ngIf="NacionalidadNovalido" class="text-danger" style="color: red;">
+                        Seleccione una opción
+                    </small>
+                    <input class="form-check-input" type="radio" name="aspi_nacionalidad" id="aspi_nacionalidad" formControlName="aspi_nacionalidad" value="M" [class.is-invalid]="NacionalidadNovalido" >
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Mexicano
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="aspi_nacionalidad" id="aspi_nacionalidad2"  formControlName="aspi_nacionalidad" value="E" [class.is-invalid]="NacionalidadNovalido">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Extranjero
+                    </label>
+                  </div>
+            </div><br>
+            <div class="mb-3">
+                <label for="aspi_calle" class="form-label">Calle:</label><br>
+                <small *ngIf="CalleNovalido" class="text-danger" style="color: red;">
+                    Ingrese nombre de la calle
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="30" 
+                formControlName="aspi_calle" 
+                autocomplete="off"   
+                [class.is-invalid]="CalleNovalido"        
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_numero" class="form-label">Número:</label><br>
+                <small *ngIf="NumeroNovalido" class="text-danger" style="color: red;">
+                    Ingrese un numero
+                </small>
+                <input type="number" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="5" 
+                formControlName="aspi_numero" 
+                [class.is-invalid]="NumeroNovalido"   
+                autocomplete="off"               
+                >
+            </div>
+            <div class="mb-3">
+                <label for="aspi_colonia" class="form-label">Colonia o Fraccionamiento:</label><br>
+                <small *ngIf="ColoniaNovalido" class="text-danger" style="color: red;">
+                    Ingrese una colonia o fraccionamiento
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="30" 
+                formControlName="aspi_colonia" 
+                [class.is-invalid]="ColoniaNovalido"   
+                autocomplete="off"                
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_telcasa" class="form-label">Telefono de casa:</label><br>
+                <input type="number" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="15" 
+                formControlName="aspi_telcasa" 
+                autocomplete="off"                
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_telofi" class="form-label">Telefono de oficina:</label><br>
+                <input type="number" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="15" 
+                formControlName="aspi_telofi" 
+                autocomplete="off"              
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_telcel" class="form-label">Telefono Celular:</label><br>
+                <small *ngIf="TelCelNovalido" class="text-danger" style="color: red;">
+                    Ingrese un telefono celular
+                </small>
+                <input type="number" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="15" 
+                formControlName="aspi_telcel" 
+                autocomplete="off"     
+                [class.is-invalid]="TelCelNovalido"              
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_escolaridad" class="form-label">Escolaridad:</label><br>
+                <small *ngIf="EscolarNovalido" class="text-danger" style="color: red;">
+                    Ingrese una escolaridad
+                </small>
+                <select id="aspi_escolaridad" class="form-control" formControlName="aspi_escolaridad" [class.is-invalid]="EscolarNovalido">
+                    <option selected="selected" value="">-- Seleccione Escolaridad --</option>
+                    <option *ngFor="let cat of catescolar" value="{{ cat.cate_escoid}}">{{cat.cate_descrip}}</option>
+                </select>
+                
+            </div>
+            <div class="mb-3">
+                <label for="aspi_esc_procede" class="form-label">Escuela de procedencia:</label><br>
+                <small *ngIf="EscuelaProcedeNovalido" class="text-danger" style="color: red;">
+                    Ingrese una escuela de procedencia
+                </small>
+                <input type="datetime" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="45" 
+                formControlName="aspi_esc_procede" 
+                [class.is-invalid]="EscuelaProcedeNovalido"
+                autocomplete="off"                
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_con_titulo" class="form-label">Ya cuenta con titulo:</label><br><br>
+                <div class="form-check">
+                    <small *ngIf="TituloNovalido" class="text-danger" style="color: red;">
+                        Seleccione una opción
+                    </small>
+                    <input class="form-check-input" type="radio" name="aspi_con_titulo" id="aspi_con_titulo" formControlName="aspi_con_titulo" value="S" [class.is-invalid]="TituloNovalido">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Si
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="aspi_con_titulo" id="aspi_con_titulo2"  formControlName="aspi_con_titulo" value="N" [class.is-invalid]="TituloNovalido">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      No
+                    </label>
+                  </div>
+            </div><br>
+            <div class="mb-3">
+                <label for="aspi_con_cedula" class="form-label">Ya cuenta con cedula profesional:</label><br><br>
+                <div class="form-check">
+                    <small *ngIf="CedulaNovalido" class="text-danger" style="color: red;">
+                        Seleccione una opción
+                    </small>
+                    <input class="form-check-input" type="radio" name="aspi_con_cedula" id="aspi_con_cedula" formControlName="aspi_con_cedula" value="S" [class.is-invalid]="CedulaNovalido">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Si
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="aspi_con_cedula" id="aspi_con_cedula2"  formControlName="aspi_con_cedula" value="N" [class.is-invalid]="CedulaNovalido"> 
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      No
+                    </label>
+                  </div>
+            </div><br>
+            <div class="mb-3">
+                <label for="aspi_trabaja" class="form-label">Trabaja actualmente:</label><br><br>
+                <div class="form-check">
+                    <small *ngIf="TrabajaNovalido" class="text-danger" style="color: red;">
+                        Seleccione una opción
+                    </small>
+                    <input class="form-check-input" type="radio" name="aspi_trabaja" id="aspi_trabaja" formControlName="aspi_trabaja" value="S" [class.is-invalid]="TrabajaNovalido"> 
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Si
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="aspi_trabaja" id="aspi_trabaja2"  formControlName="aspi_trabaja" value="N" [class.is-invalid]="TrabajaNovalido">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      No
+                    </label>
+                  </div>
+            </div><br>
+            <div class="mb-3">
+                <label for="aspi_lugar_trabajo" class="form-label">Lugar de trabajo:</label><br>
+                <input type="datetime" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="90" 
+                formControlName="aspi_lugar_trabajo" 
+                autocomplete="off"                
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_actividades" class="form-label">Actividades</label><br>
+                <textarea 
+                name="textarea" 
+                rows="100" cols="120" 
+                class="form-control" 
+                maxlength="200"
+                formControlName="aspi_actividades" 
+                oninput="this.value = this.value.toUpperCase()"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="aspi_puesto" class="form-label">Puesto:</label><br>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="80" 
+                formControlName="aspi_puesto" 
+                autocomplete="off"                
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_antiguedad" class="form-label">Antiguedad:</label><br>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="10" 
+                formControlName="aspi_antiguedad" 
+                autocomplete="off"               
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="aspi_edo_nac" class="form-label">Estado de nacimiento:</label><br>
+                <small *ngIf="EdoNacNovalido" class="text-danger" style="color: red;">
+                    Ingrese un estado
+                </small>
+                <select id="aspi_edo_nac" class="form-control" formControlName="aspi_edo_nac" (change)="Municipios($event.target.value)" [class.is-invalid]="EdoNacNovalido">
+                    <option selected="selected" value="">-- Seleccione un estado-</option>
+                    <option *ngFor="let edonac of estados" value="{{ edonac.cve_edo}}">{{edonac.desc_edo}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="aspi_mun_nac" class="form-label">Municipio de nacimiento:</label><br>
+                <small *ngIf="MunNacNovalido" class="text-danger" style="color: red;">
+                    Ingrese un municipio
+                </small>
+                <select id="aspi_mun_nac" class="form-control" formControlName="aspi_mun_nac" [class.is-invalid]="MunNacNovalido">
+                    <option selected="selected" value="">-- Seleccione un municipio-</option>
+                    <option *ngFor="let munnac of mun" value="{{ munnac[0]}}">{{munnac[1]}}</option>
+                </select>
+              
+            </div>
+            <div class="mb-3">
+                <label for="aspi_edo_proc" class="form-label">Estado de la escuela de procedencia:</label><br>
+                <small *ngIf="EdoProcNovalido" class="text-danger" style="color: red;">
+                    Ingrese un estado
+                </small>
+                <select id="aspi_edo_proc" class="form-control" formControlName="aspi_edo_proc" (change)="MunicipiosProc($event.target.value)" [class.is-invalid]="EdoProcNovalido"> 
+                    <option selected="selected" value="">-- Seleccione un estado-</option>
+                    <option *ngFor="let edoproc of estados" value="{{ edoproc.cve_edo}}">{{edoproc.desc_edo}}</option>
+                </select>
+            </div>
+           
+            <div class="mb-3">
+                <label for="aspi_mun_proc" class="form-label">Municipio de la escuela de procedencia:</label><br>
+                <small *ngIf="MunProcNovalido" class="text-danger" style="color: red;">
+                    Ingrese un municipio
+                </small>
+                <select id="aspi_mun_proc" class="form-control" formControlName="aspi_mun_proc" [class.is-invalid]="MunProcNovalido">
+                    <option selected="selected" value="">-- Seleccione un municipio-</option>
+                    <option *ngFor="let munpro of munproc" value="{{ munpro[0]}}">{{munpro[1]}}</option>
+                </select>              
+            </div>
+        </ng-container>
+        <ng-container >
+            <div style="text-align: center">
+                <button class="btn btn-blue" [disabled]="!forma.valid">Registrar Aspirante</button>
+            </div>
+        </ng-container>
+    </div>
+        
+   </form>
+    </block-ui>

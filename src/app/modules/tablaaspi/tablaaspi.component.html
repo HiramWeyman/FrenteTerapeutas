@@ -1,0 +1,56 @@
+<ng-container>
+    <div class="container text-center">
+
+        <button mat-button (click)="aspirante()" mat-flat-button color="primary">Registrar Aspirante</button><br><br><br>
+        <!-- *ngIf="!this.usuario" -->
+        <div class="alert-info"  [hidden]="show">
+          Aún no hay datos de aspirante registrados.
+        </div>
+        <table *ngIf="this.usuario!=null">
+          <caption>Datos del Aspirante</caption>
+          <thead>
+            <tr>
+              <th scope="col">Acciones</th>
+              <th scope="col">Folio</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Convocatoria</th>
+              <th scope="col">Nombre Completo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usr of this.usuario">
+              <td data-label="Acciones">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialog(usr.vasp_folioaspi,usr.vasp_ures,usr.vasp_edonac,usr.vasp_edoprocede)">
+                    <mat-icon>update</mat-icon>
+                    <span>Actualizar Aspirante</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/expdigital',usr.vasp_folioaspi,usr.vasp_numconnvo,usr.vasp_descconv]">
+                    <mat-icon>folder_shared</mat-icon>
+                    <span>Expediente digital</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/pagos',usr.vasp_folioaspi,usr.vasp_numconnvo,usr.vasp_descconv]">
+                    <mat-icon>payment</mat-icon>
+                    <span>Pagos</span>
+                  </button>
+                </mat-menu>
+              </td>
+              <td data-label="Folio">{{ usr.vasp_folioaspi }}</td>
+              <td data-label="Usuario">{{ usr.vasp_matricula}}</td>
+              <td data-label="Convocatoria">{{ usr.vasp_descconv }}</td>
+              <td data-label="Nombre Completo">{{ usr.nombre }}
+                <input type="hidden" value="{{usr.vasp_ures}}">
+                <input type="hidden" value="{{usr.vasp_edonac}}">
+                <input type="hidden" value="{{usr.vasp_edoprocede}}">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+   
+      
+      </div>
+  </ng-container>

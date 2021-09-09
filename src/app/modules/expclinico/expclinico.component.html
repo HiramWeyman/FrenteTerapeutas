@@ -1,0 +1,78 @@
+<ng-container>
+    <div class="container text-center">
+
+        <button mat-button (click)="paciente()" mat-flat-button color="primary">Registrar Paciente</button><br><br><br>
+        <!-- *ngIf="!this.usuario" -->
+        <div class="alert-info"  [hidden]="this.pacientes!=null">
+          Aún no hay datos de pacientes registrados.
+        </div>
+        <div class="row text-center" style="width: 50%;">
+          <mat-form-field >
+            <mat-label>Buscar por nombre</mat-label>
+            <input matInput placeholder="Ex. JUAN PEREZ" id="search" [(ngModel)]="nom" name="search" value="" onkeyup="javascript:this.value=this.value.toUpperCase()" (blur) = 'TablaPacientesNombre(nom)' >
+          </mat-form-field>
+          <button mat-mini-fab color="primary" id="Btn" aria-label="Example icon button with a menu icon" (click)="TablaPacientesNombre(nom)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+        <table *ngIf="this.pacientes!=null">
+          <caption>Norma Oficial de Expediente Clínico</caption>
+          <thead>
+            <tr>
+              <th scope="col">Acciones</th>
+              <th scope="col">Paciente</th>
+              <th scope="col">Hoja de usos multiples</th>
+              <th scope="col">Plan de tratamiento</th>
+        <!--       <th scope="col">Nota de atención</th> -->
+            <!--   <th scope="col">Word</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usr of this.pacientes.Resultado">
+              <td data-label="Funciones">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialogDiagnostico(usr.paciente_id,2)">
+                    <mat-icon>assessment</mat-icon>
+                    <span>Diagnóstico</span>
+                  </button>
+                  <button mat-menu-item (click)="openDialogEvaluacion(usr.paciente_id)">
+                    <mat-icon>assignment</mat-icon>
+                    <span>Metodos de evaluación</span>
+                  </button>
+        
+                  <button mat-menu-item [routerLink]="['/psicoterapia',usr.paciente_id]">
+                    <mat-icon>folder_shared</mat-icon>
+                    <span>Psicoterapia</span>
+                  </button><br>   
+              <!--     <button mat-menu-item (click)="openDialogDesc(usr.paciente_id)">
+                    <mat-icon>person_pin</mat-icon>
+                    <span>Nota de atención</span>
+                  </button>   -->
+                  <hr>
+                </mat-menu>
+              </td>
+              
+              <td data-label="Nombre Completo">{{ usr.paciente_nombre}}</td>
+              <td data-label="detalle">
+                <button mat-mini-fab aria-label="Example icon button with a home icon" (click)="reportePDF(usr.paciente_id)" >
+                    <mat-icon>recent_actors</mat-icon>
+                </button>
+              </td>
+              <td data-label="PDF"><button mat-mini-fab aria-label="Example icon button with a home icon" (click)='reporteTratamiento(usr.paciente_id);'><mat-icon>poll</mat-icon></button>
+                <input type="hidden" value="{{usr.paciente_id}}">
+                <input type="hidden" value="{{usr.paciente_usuario}}">
+                <input type="hidden" value="{{usr.paciente_edo_nac}}"></td>
+      <!--         <td data-label="Word"><button mat-mini-fab aria-label="Example icon button with a home icon"  (click)='reporte(usr.paciente_id);'><mat-icon> insert_drive_file</mat-icon></button>
+               
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      
+   
+      
+      </div>
+  </ng-container>

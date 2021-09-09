@@ -1,0 +1,76 @@
+<h2 mat-dialog-title>Diagnostico del paciente</h2>
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field>
+        <mat-label>Perfil cognitivo</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_diagnostico.pac_diag_perfilcog" readonly></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>Pruebas psicométricas</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_diagnostico.pac_diag_pruebaspsi" readonly></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Diagnostico psicologico</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_diagnostico.pac_diag_diagnostico" readonly></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Diagnostico primario</mat-label>
+        <mat-select [(ngModel)]="pac_diagnostico.pac_diag_primario" [disabled]=true>
+          <mat-option *ngFor="let diag of pac_diag_prim" [value]="diag.diag_id">
+            {{diag.diag_descrip}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Diagnostico específico</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_diagnostico.pac_diag_especifico" readonly></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Objetivo integral del tratamiento</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_diagnostico.pac_diag_obj_integral" readonly></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Objetivo(s) espacificos(s)</mat-label>
+        <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_diagnostico.pac_diag_obj_especifico" readonly></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Pronóstico</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_diagnostico.pac_diag_pronostico" readonly></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Modelo terapeutico</mat-label>
+        <mat-select [(ngModel)]="pac_diagnostico.pac_diag_modelo_tera" [disabled]=true>
+          <mat-option *ngFor="let diag of pac_diag_mod" [value]="diag.modtera_id">
+            {{diag.modtera_descrip}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Motivo de alta</mat-label>
+        <mat-select [(ngModel)]="pac_diagnostico.pac_diag_motivo_alta" [disabled]=true>
+          <mat-option *ngFor="let diag of pac_diag_alta" [value]="diag.alta_id">
+            {{diag.alta_descrip}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="pac_diagnostico.pac_diag_fec_seguimiento" type="date" placeholder="Fecha de seguimiento" readonly>
+      </mat-form-field><br>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+<!--     <button mat-button  mat-flat-button color="primary" *ngIf="!pac_diagnostico.pac_diag_id" (click)="GuardaDiagnostico(pac_diagnostico)">Guardar diagnostico del paciente</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_diagnostico.pac_diag_id" (click)="ActualizaDiagnostico(pac_diagnostico.pac_diag_id,pac_diagnostico)">Actualizar diagnostico del paciente</button> -->
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

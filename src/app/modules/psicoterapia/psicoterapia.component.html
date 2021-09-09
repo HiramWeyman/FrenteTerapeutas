@@ -1,0 +1,58 @@
+<ng-container>
+    <div class="container text-center">
+
+        <button mat-button (click)="openDialog()" mat-flat-button color="primary">Registrar Session</button><br><br><br>
+        <!-- *ngIf="!this.usuario" -->
+        <div class="alert-info"  [hidden]="this.tablaSessiones!=null">
+          Aún no hay sessiones registradas para este paciente.
+        </div>
+     
+        <table *ngIf="this.tablaSessiones!=null">
+          <caption>Psicoterapia</caption><br>
+          <caption><p>{{this.nombre}}</p></caption>
+          <thead>
+            <tr>
+              <th scope="col">Acciones</th>
+              <th scope="col">Session</th>
+              <th scope="col">Detalle</th>
+              <th scope="col">Nota de Atención</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usr of this.tablaSessiones">
+              <td data-label="Funciones">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialoAct(usr.pac_psico_id)">
+                    <mat-icon>update</mat-icon>
+                    <span>Actualizar Session</span>
+                  </button>     
+                </mat-menu>
+              </td>
+              <td data-label="session">{{ usr.pac_psico_desc}}</td>
+              <td data-label="detalle">
+                <button mat-mini-fab aria-label="Example icon button with a home icon" (click)="openDialogDet(usr.pac_psico_id)">
+                  <mat-icon>description</mat-icon>
+                </button>
+                <input type="hidden" value="{{usr.pac_psico_id}}">
+                <input type="hidden" value="{{usr.pac_psico_pac_id}}">
+              </td>
+              <td>
+                <button mat-mini-fab aria-label="Example icon button with a home icon"  (click)='NotaAtencion(usr.pac_psico_id);'><mat-icon> insert_drive_file</mat-icon></button>
+              </td>
+              <td>
+                <button mat-mini-fab color="warn" (click)="Eliminar(usr.pac_psico_id,usr)">
+                  <mat-icon>delete_sweep</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <br>
+   
+      
+      </div>
+  </ng-container>

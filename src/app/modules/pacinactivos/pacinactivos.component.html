@@ -1,0 +1,43 @@
+<ng-container>
+    <div class="container text-center">
+
+<!--         <button mat-button (click)="paciente()" mat-flat-button color="primary">Registrar Paciente</button><br><br><br> -->
+        <!-- *ngIf="!this.usuario" -->
+        <div class="alert-info"  [hidden]="this.pacientes!=null">
+          Aún no hay datos de pacientes registrados.
+        </div>
+        <div class="row text-center" style="width: 50%;">
+          <mat-form-field >
+            <mat-label>Buscar por nombre</mat-label>
+            <input matInput placeholder="Ex. JUAN PEREZ" id="search" [(ngModel)]="nom" name="search" value="" onkeyup="javascript:this.value=this.value.toUpperCase()" (blur) = 'TablaPacientesNombre(nom)' >
+          </mat-form-field>
+          <button mat-mini-fab color="primary" id="Btn" aria-label="Example icon button with a menu icon" (click)="TablaPacientesNombre(nom)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+        <table *ngIf="this.pacientes!=null">
+          <caption>Lista de Pacientes Inactivos</caption>
+          <thead>
+            <tr>
+             
+              <th scope="col">Paciente</th>
+              <th scope="col">Activar paciente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usr of this.pacientes.Resultado">
+              <td data-label="Nombre Completo">{{ usr.paciente_nombre}}</td>
+              <td data-label="PDF"><button mat-mini-fab aria-label="Example icon button with a home icon" (click)='ActivarPaciente(usr.paciente_id,usr);'><mat-icon>power_settings_new</mat-icon></button>
+                <input type="hidden" value="{{usr.paciente_id}}">
+                <input type="hidden" value="{{usr.paciente_usuario}}">
+                <input type="hidden" value="{{usr.paciente_edo_nac}}"></td>
+
+            </tr>
+          </tbody>
+        </table>
+      
+   
+      
+      </div>
+  </ng-container>
+

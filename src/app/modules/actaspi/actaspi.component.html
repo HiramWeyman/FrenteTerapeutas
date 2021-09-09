@@ -1,0 +1,208 @@
+<h2 mat-dialog-title>Actualizar Datos del Aspirante</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-form-field>
+        <mat-select placeholder="Facultad" [(ngModel)]="usuario.vasp_ures" name="vasp_ures" (selectionChange)="Convocatorias($event.value)" >
+            <!--<option *ngFor="let fc of ures" value="{{ fc.ures_ures}}">{{fc.ures_descrip}}</option>  -->
+          <mat-option *ngFor="let fc of ures" [value]="fc.ures_ures">
+            {{fc.ures_descrip}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Convocatoria</mat-label>
+        <mat-select [(ngModel)]="usuario.vasp_numconnvo">
+    <!--       <mat-option selected="selected">
+            {{usuario.vasp_descconv}}
+          </mat-option> -->
+          <mat-option *ngFor="let cv of convocatorias" [value]="cv.conv_id">
+            {{cv.conv_descrip}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="usuario.vasp_nombre" type="text" placeholder="Nombre">
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_paterno" type="text" placeholder="Apellido Paterno">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_materno" type="text" placeholder="Apellido Materno">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_fnac" type="date" placeholder="Fecha de nacimiento">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Género</mat-label>
+        <mat-select [(ngModel)]="usuario.vasp_genero">
+          <mat-option value="M">MASCULINO</mat-option>
+          <mat-option value="F">FEMENINO</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_curp" type="text" placeholder="CURP">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_correo" type="text" placeholder="Correo">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_rfc" type="text" placeholder="RFC">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Estado Civil</mat-label>
+        <mat-select [(ngModel)]="usuario.vasp_ecivil">
+          <mat-option value="SOLTERO">SOLTERO</mat-option>
+          <mat-option value="CASADO">CASADO</mat-option>
+          <mat-option value="VIUDO">VIUDO</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Nacionalidad</mat-label>
+        <mat-select [(ngModel)]="usuario.vasp_nacionalidad">
+          <mat-option value="M">MEXICANO</mat-option>
+          <mat-option value="E">EXTRANJERO</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_calle" type="text" placeholder="Calle">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_numero" type="text" placeholder="Número">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_colonia" type="text" placeholder="Colonia o Fraccionamiento">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_telcasa" type="number" placeholder="Telefono de casa">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_telofi" type="number" placeholder="Telefono de oficina">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_telcel" type="number" placeholder="Telefono celular">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Escolaridad</mat-label>
+        <mat-select  [(ngModel)]="usuario.vasp_escolaridad" >
+          <mat-option *ngFor="let cat of catescolar" [value]="cat.cate_escoid">
+            {{cat.cate_descrip}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_escprocede" type="text" placeholder="Escuela de procedencia">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Cuenta con título profesional</mat-label>
+        <mat-select [(ngModel)]="usuario.vasp_titulo">
+          <mat-option value="S">SI</mat-option>
+          <mat-option value="N">NO</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Cuenta con cédula profesional</mat-label>
+        <mat-select [(ngModel)]="usuario.vasp_concedula">
+            <mat-option value="S">SI</mat-option>
+            <mat-option value="N">NO</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Trabaja actualmente</mat-label>
+        <mat-select [(ngModel)]="usuario.vasp_trabaja">
+            <mat-option value="S">SI</mat-option>
+            <mat-option value="N">NO</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_ltrabajo" type="text" placeholder="Lugar de trabajo">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_actividad" type="text" placeholder="Actividad desempeñada">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_puesto" type="text" placeholder="Puesto">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_antiguedad" type="number" placeholder="Antiguedad">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Escolaridad</mat-label>
+        <mat-select  [(ngModel)]="usuario.vasp_escolaridad" >
+          <mat-option *ngFor="let cat of catescolar" [value]="cat.cate_escoid">
+            {{cat.cate_descrip}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Estado de nacimiento</mat-label>
+        <mat-select  [(ngModel)]="usuario.vasp_edonac" (selectionChange)="Municipios($event.value)">
+          <mat-option *ngFor="let edonac of estados" [value]="edonac.cve_edo">
+            {{edonac.desc_edo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Municipio de nacimiento</mat-label>
+        <mat-select  [(ngModel)]="usuario.vasp_munnac" >
+          <mat-option *ngFor="let munnac of mun" [value]="munnac[0]">
+            {{munnac[1]}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Estado de procedencia</mat-label>
+        <mat-select  [(ngModel)]="usuario.vasp_edoprocede" (selectionChange)="MunicipiosProc($event.value)">
+          <mat-option *ngFor="let edoproc of estados" [value]="edoproc.cve_edo">
+            {{edoproc.desc_edo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Municipio de procedencia</mat-label>
+        <mat-select  [(ngModel)]="usuario.vasp_munprocede" >
+          <mat-option *ngFor="let munpro of munproc" [value]="munpro[0]">
+            {{munpro[1]}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+<!--       <mat-form-field>
+        <input matInput [(ngModel)]="usuario.vasp_matricula" type="text" placeholder="Matricula">
+    </mat-form-field><br> -->
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" (click)="ActualizaAspirante(usuario)">Actualizar Aspirante</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>
+

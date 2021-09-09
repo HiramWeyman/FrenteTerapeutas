@@ -1,0 +1,24 @@
+export class PacienteDet{
+modalidad_id:number;
+modalidad_descrip:string;
+paciente_modalidad:number;
+sexo_id:number;
+sexo_descrip:string;
+escolar_descrip:string;
+desc_mun:string;
+desc_edo:string;
+estado_res:string;
+municipio_res:string;
+edocivil_descrip:string;
+estatus_descrip:string;
+paciente_nombre:string;
+paciente_usuario:number;
+paciente_id:number;
+paciente_edad:number;
+paciente_fec_nac:string;
+paciente_direccion:string;
+paciente_ocupacion:string;
+paciente_telefono:string;
+paciente_telefono_eme:string;
+paciente_fec_ing:string;
+}

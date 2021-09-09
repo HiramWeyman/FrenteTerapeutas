@@ -1,0 +1,36 @@
+export class Aspirante {
+    aspi_folioaspi:number;
+    aspi_usuario:number;
+    aspi_numconvo:number;
+    aspi_nombre: string;
+    aspi_paterno: string;
+    aspi_materno: string;
+    aspi_fnacimiento:Date;
+    aspi_genero:string;
+    aspi_curp:string;
+    aspi_correo:string;
+    aspi_rfc:string;
+    aspi_ecivil:string;
+    aspi_nacionalidad:string;
+    aspi_calle:string;
+    aspi_numero:string;
+    aspi_colonia:string;
+    aspi_telcasa:string;
+    aspi_telofi:string;
+    aspi_telcel:string;
+    aspi_escolaridad:string;
+    aspi_esc_procede:string;
+    aspi_con_titulo:string;
+    aspi_con_cedula:string;
+    aspi_trabaja:string;
+    aspi_lugar_trabajo:string;
+    aspi_actividades:string;
+    aspi_puesto:string;
+    aspi_antiguedad:string;
+    aspi_edo_nac:string;
+    aspi_mun_nac:string;
+    aspi_edo_proc:string;
+    aspi_mun_proc:string;
+    aspi_matricula:string;
+    aspi_user:string;
+}

@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Descripción del Paciente</h2>
+<mat-dialog-content class="mat-typography">
+ 
+
+    <mat-form-field>
+        <mat-label>1.Aspectos Generales</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desc.pac_desc_aspectos"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Vestimenta y Aliño</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desc.pac_desc_vestimenta"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Porte y Actitud</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desc.pac_desc_porte"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Movimientos, voz y lenguaje</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desc.pac_desc_movimientos"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>5.Afecto</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_desc.pac_desc_afecto"></textarea>
+        <input matInput type="text"  [(ngModel)]="pac_desc.pac_desc_id"  [hidden]="true" value="this.paciente_id">
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_desc.pac_desc_id" (click)="GuardarDescrip(pac_desc)">Guardar Descripción</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_desc.pac_desc_id" (click)="ActualizarDescrip(pac_desc.pac_desc_id,pac_desc)">Actualizar Descripción</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_desc.pac_desc_id" (click)="EliminarDescrip(pac_desc.pac_desc_id,pac_desc)">Eliminar Descripción</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

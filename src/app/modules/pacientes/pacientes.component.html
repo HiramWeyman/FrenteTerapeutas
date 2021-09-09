@@ -1,0 +1,135 @@
+<ng-container>
+    <div class="container text-center">
+
+        <button mat-button (click)="paciente()" mat-flat-button color="primary">Registrar Paciente</button><br><br><br>
+        <!-- *ngIf="!this.usuario" -->
+        <div class="alert-info"  [hidden]="this.pacientes!=null">
+          Aún no hay datos de pacientes registrados.
+        </div>
+        <div class="row text-center" style="width: 50%;">
+          <mat-form-field >
+            <mat-label>Buscar por nombre</mat-label>
+            <input matInput placeholder="Ex. JUAN PEREZ" id="search" [(ngModel)]="nom" name="search" value="" onkeyup="javascript:this.value=this.value.toUpperCase()" (blur) = 'TablaPacientesNombre(nom)' >
+          </mat-form-field>
+          <button mat-mini-fab color="primary" id="Btn" aria-label="Example icon button with a menu icon" (click)="TablaPacientesNombre(nom)" >
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+        <table *ngIf="this.pacientes!=null">
+          <caption>Datos Generales</caption>
+          <thead>
+            <tr>
+              <th scope="col">Acciones</th>
+              <th scope="col">Paciente</th>
+              <th scope="col">Detalle Paciente</th>
+              <th scope="col">Diagnostico</th>
+              <th scope="col">Desactivar paciente</th>
+              <th scope="col">PDF</th>
+              <th scope="col">Word</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usr of this.pacientes.Resultado">
+              <td data-label="Funciones">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialog(usr.paciente_id,usr.paciente_usuario,usr.paciente_edo_nac,usr.paciente_edo_res)">
+                    <mat-icon>update</mat-icon>
+                    <span>Actualizar Paciente</span>
+                  </button>     
+                  <button mat-menu-item (click)="openDialogDesc(usr.paciente_id)">
+                    <mat-icon>person_pin</mat-icon>
+                    <span>Descripción del paciente</span>
+                  </button> 
+                  <button mat-menu-item (click)="openDialogMotivoCons(usr.paciente_id)">
+                    <mat-icon>mood</mat-icon>
+                    <span>Motivo de la consulta</span>
+                  </button>      
+                  <button mat-menu-item (click)="openDialogSituacionAct(usr.paciente_id)">
+                    <mat-icon>label_important</mat-icon>
+                    <span>Situacion Actual</span>
+                  </button>   
+                  <button mat-menu-item [routerLink]="['/constefam',usr.paciente_id]">
+                    <mat-icon>group</mat-icon>
+                    <span>Constelacion familiar</span>
+                  </button>
+                  <button mat-menu-item (click)="openDialogRecuerdos(usr.paciente_id)">
+                    <mat-icon>all_inclusive</mat-icon>
+                    <span>Recuerdos tempranos</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/historia',usr.paciente_id]">
+                    <mat-icon>chrome_reader_mode</mat-icon>
+                    <span>Historia personal</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/escolaridad',usr.paciente_id]">
+                    <mat-icon>school</mat-icon>
+                    <span>Escolaridad</span>
+                  </button>
+                  <button mat-menu-item (click)="openDialogDiversiones(usr.paciente_id)">
+                    <mat-icon>casino</mat-icon>
+                    <span>Diversiones e intereses</span>
+                  </button>
+                  <button mat-menu-item (click)="openDialogAjustesSoc(usr.paciente_id)">
+                    <mat-icon>accessibility_new</mat-icon>
+                    <span>Ajustes sociales</span>
+                  </button>
+                  <button mat-menu-item (click)="openDialogDesarrolloSex(usr.paciente_id)">
+                    <mat-icon>description</mat-icon>
+                    <span>Desarrollo sexual</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/maritales',usr.paciente_id]">
+                    <mat-icon>sentiment_satisfied</mat-icon>
+                    <span>Datos maritales</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/simismo',usr.paciente_id]">
+                    <mat-icon>person</mat-icon>
+                    <span>Descripcion de si mismo</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/mental',usr.paciente_id]">
+                    <mat-icon>assignment</mat-icon>
+                    <span>Estado mental</span>
+                  </button>
+                  <button mat-menu-item (click)="openDialogDiagnostico(usr.paciente_id,1)">
+                    <mat-icon>assessment</mat-icon>
+                    <span>Diagnóstico</span>
+                  </button>
+                  <button mat-menu-item [routerLink]="['/psicoterapia',usr.paciente_id]">
+                    <mat-icon>folder_shared</mat-icon>
+                    <span>Psicoterapia</span>
+                  </button><br>
+                  <hr>
+                </mat-menu>
+              </td>
+              
+              <td data-label="Nombre Completo">{{ usr.paciente_nombre}}</td>
+              <td data-label="detalle">
+                <button mat-mini-fab aria-label="Example icon button with a home icon" (click)="openDialogPacienteDet(usr.paciente_id)" >
+                  <mat-icon>description</mat-icon>
+                </button>
+              </td>
+              <td data-label="detalle">
+                <button mat-mini-fab aria-label="Example icon button with a home icon" (click)="openDialogDiagnosticoDet(usr.paciente_id)">
+                  <mat-icon>description</mat-icon>
+                </button>
+              </td>
+              <td data-label="detalle">
+                <button mat-mini-fab aria-label="Example icon button with a home icon" (click)="DesactivarPaciente(usr.paciente_id,usr)">
+                  <mat-icon>power_settings_new</mat-icon>
+                </button>
+              </td>
+              <td data-label="PDF"><button mat-mini-fab color="success"><img src="assets/images/pdf-file.png" style="width: 60%;"  (click)='reportePDF(usr.paciente_id);'></button></td>
+              <td data-label="Word"><button mat-mini-fab color="success"><img src="assets/images/word.png" style="width: 60%;"  (click)='reporte(usr.paciente_id);'></button>
+                <input type="hidden" value="{{usr.paciente_id}}">
+                <input type="hidden" value="{{usr.paciente_usuario}}">
+                <input type="hidden" value="{{usr.paciente_edo_nac}}">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+   
+      
+      </div>
+  </ng-container>

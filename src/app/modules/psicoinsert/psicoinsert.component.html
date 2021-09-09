@@ -1,0 +1,35 @@
+<h2 mat-dialog-title><p>{{this.descrip}}</p></h2><br>
+<!-- <mat-form-field>
+    <input matInput [(ngModel)]="pac_psico.pac_psico_fecha" type="date" placeholder="Fecha " >
+</mat-form-field><br> -->
+<mat-form-field>
+    <mat-label>Diagnóstico o descripción del problema</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psico.pac_psico_texto"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Objetivo de intervención</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psico.pac_psico_intervencion"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Técnicas o procedimiento de intervención</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psico.pac_psico_tecnicas"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Resultados</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psico.pac_psico_resultados"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Recomendaciones</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psico.pac_psico_recomenda"></textarea>
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Obsrvaciones</mat-label>
+    <textarea  matInput rows="5" cols="40"  [(ngModel)]="pac_psico.pac_psico_observaciones"></textarea>
+</mat-form-field>
+<!-- <mat-dialog-content class="mat-typography">
+
+</mat-dialog-content> -->
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_psico.pac_psico_id" (click)="GuardaSession(pac_psico)">Guardar Session</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

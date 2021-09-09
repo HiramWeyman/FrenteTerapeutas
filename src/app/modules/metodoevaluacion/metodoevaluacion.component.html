@@ -1,0 +1,74 @@
+
+
+
+  <h2 mat-dialog-title>Métodos de Evaluación</h2>
+  <mat-accordion>
+<!--     <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          This is the expansion title
+        </mat-panel-title>
+        <mat-panel-description>
+          This is a summary of the content
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel> -->
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Agregar método de evaluación
+        </mat-panel-title>
+      <!--   <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Método de evaluación</mat-label>
+        <input matInput placeholder="Ex. ENTREVISTA" [(ngModel)]="evaluaciondescrip"  style="text-transform: uppercase">
+      </mat-form-field><br>
+      <button mat-button  mat-flat-button color="primary" (click)="AgregarMetodo(evaluaciondescrip)">Agregar metodo de evaluación</button>
+    </mat-expansion-panel>
+  </mat-accordion><br>
+<!--   <mat-selection-list #cats (selectionChange)="onSelection($event, cats.selectedOptions)" >
+    <mat-list-option *ngFor="let est of catmetodo" [value]="est.cat_metodo" (click)="Agregar(est.cat_metodo,cats.selectedOptions)">
+      {{est.cat_metodo_descrip}}
+    </mat-list-option>
+  </mat-selection-list> -->
+  <mat-form-field>
+    <mat-label>Métodos de evaluación</mat-label>
+    <mat-select   [(ngModel)]="evaluacion.metodo_evaluacion" (selectionChange)="Agregar()" >
+      <mat-option *ngFor="let est of catmetodo" [value]="est.cat_metodo">
+        {{est.cat_metodo_descrip}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+        <table *ngIf="this.metodos!=null">
+          <thead>
+            <tr>
+              
+              <th scope="col">Metodo</th>
+              <th scope="col">Agregar resultado</th>
+              <th scope="col">Eliminar</th>
+  
+            <!--   <th scope="col">Word</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usr of eva">
+              <td data-label="Nombre Completo">{{ usr.cat_metodo_descrip}}</td>
+              <td data-label="Nombre Completo"> <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon"  (click)='AgregarResultado(usr.metodo_id,usr.metodo_pac_id);'><mat-icon>note_add</mat-icon></button></td>
+              <td data-label="Nombre Completo"> <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" (click)='EliminaResultado(usr.metodo_id,usr.metodo_pac_id);'><mat-icon>delete</mat-icon></button>
+                <input type="hidden" value="{{usr.metodo_id}}">
+                <input type="hidden" value="{{usr.metodo_pac_id}}">
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+<div mat-dialog-actions>
+   <!--  <button mat-button  mat-flat-button color="primary" (click)="ActualizaPaciente(paciente)">Actualizar Paciente</button> -->
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>

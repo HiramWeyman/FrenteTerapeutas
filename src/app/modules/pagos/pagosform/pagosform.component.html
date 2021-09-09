@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="../../../../assets/css/login.css">
+
+<h2 mat-dialog-title>Agregar un pago</h2>
+
+<div class="container">
+    <form class="row" [formGroup]="forma">
+
+        <div class="col-lg-12">
+            <small *ngIf="referenciaNovalido" class="text-danger">
+                Seleccione una referencia
+            </small>
+            <select style="width: 95%;" class="form-control" formControlName="pago_referencia" [class.is-invalid]="referenciaNovalido">
+                <option value=""> - Seleccione una referencia - </option>
+                <option value="{{r.vref_refeid}}" *ngFor="let r of referencia">{{r.vref_concepto}}</option>
+            </select>
+        </div>
+
+
+        <div class="col-lg-12">
+            <small *ngIf="descripNovalido" class="text-danger">
+                Ingrese una Descripción
+            </small>
+            <small *ngIf="!descripNovalido">
+                Descripción
+            </small>
+            <input style="width: 95%;" type="text" class="form-control" 
+                formControlName="pago_descrip" maxlength="100" placeholder="Ingrese una Descripción" 
+                autocomplete="off" [class.is-invalid]="descripNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="col-lg-12">
+            <small *ngIf="bancoNovalido" class="text-danger">
+                Seleccione un banco
+            </small>
+            <select style="width: 95%;" class="form-control" formControlName="pago_banco" [class.is-invalid]="bancoNovalido">
+                <option value=""> - Seleccione un banco - </option>
+                <option value="{{b.catb_bancoid}}" *ngFor="let b of bancos">{{b.catb_descrip}}</option>
+            </select>
+        </div>
+        <div class="col-lg-12">
+            <small *ngIf="fechaNovalido" class="text-danger">
+                Ingrese una Fecha
+            </small>
+            <small *ngIf="!fechaNovalido">
+                Fecha
+            </small>
+            <input style="width: 95%;" type="date" class="form-control" 
+                formControlName="pago_fpago" 
+                autocomplete="off" [class.is-invalid]="fechaNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="col-lg-12">
+            <small *ngIf="montoNovalido" class="text-danger">
+                Ingrese un monto
+            </small>
+            <small *ngIf="!montoNovalido">
+                Monto
+            </small>
+            <br>
+            $
+            <input style="width: 90%;" type="text" class="form-control" 
+                formControlName="pago_monto" placeholder="Ingrese un monto" 
+                [class.is-invalid]="montoNovalido"
+                (keypress)="validateNumber($event)">
+        </div>
+
+        <div class="col-lg-12">
+            <small *ngIf="ticketNovalido" class="text-danger">
+                Ingrese numero de ticket
+            </small>
+            <small *ngIf="!ticketNovalido">
+                Numero de ticket
+            </small>
+            <input style="width: 95%;" type="text" class="form-control" 
+                formControlName="pago_ticket" maxlength="20" placeholder="Ingrese numero de ticket" 
+                autocomplete="off" [class.is-invalid]="ticketNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+        </div>
+    </form>
+</div>
+
+<button type="button" [mat-dialog-close]="true" class="btn btn-secondary" cdkFocusInitial>Cerrar</button>
+<button type="button" class="btn btn-blue" [disabled]="!forma.valid" data-dismiss="modal" (click)='guardar();'>Guardar Aspecto</button>
+
+

@@ -1,0 +1,59 @@
+<div class="row text-center">
+    <h2 mat-dialog-title>Constelacion Familiar</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+ 
+
+    <mat-form-field>
+        <mat-label><b>Observaciones</b></mat-label>
+        <textarea  matInput rows="15" cols="40" [(ngModel)]="pac_coste.pac_conste_texto"></textarea>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>1.Antecedentes patológicos</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_antecedentes"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Descripción del padre y la madre</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_desc_padre_madre"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Hermanos</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_hermanos"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Rivalidades</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_rivalidades"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>5.Papel dentro de la familia</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_papel_fam"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>6.Uniones y fricciones</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_uniones"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>7.Normas sociales</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_normas"></textarea>
+    </mat-form-field><br>
+    
+    <mat-form-field>
+        <mat-label>8.Cambios en la constelación familiar</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_coste.pac_conste_cambios"></textarea>
+      
+    </mat-form-field><br>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_coste.pac_conste_id" (click)="GuardaConstelacion(pac_coste)">Guardar Constelación Familiar</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_coste.pac_conste_id" (click)="ActualizaConstelacion(pac_coste.pac_conste_id,pac_coste)">Actualizar Constelación Familiar</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_coste.pac_conste_id" (click)="EliminaConstelacion(pac_coste.pac_conste_id,pac_coste)">Eliminar Constelación Familiar</button>
+    <button mat-button  routerLink="/pacientes">Cancelar</button>
+</div><br><br>

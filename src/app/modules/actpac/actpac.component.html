@@ -1,0 +1,124 @@
+<h2 mat-dialog-title>Actualizar Datos del Paciente</h2>
+<mat-dialog-content class="mat-typography">
+ 
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_nombre" type="text" placeholder="Nombre Completo">
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <input matInput [(ngModel)]="paciente.paciente_direccion" type="text" placeholder="Dirección o Domicilio">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="paciente.paciente_ocupacion" type="text" placeholder="Ocupación">
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_fec_nac" type="date" placeholder="Fecha de nacimiento">
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_fec_ing" type="date" placeholder="Fecha de ingreso">
+    </mat-form-field><br>
+
+   <mat-form-field>
+        <mat-label>Género</mat-label>
+        <mat-select [(ngModel)]="paciente.paciente_sexo">
+          <mat-option *ngFor="let sex of genero" [value]="sex.sexo_id">
+            {{sex.sexo_descrip}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="paciente.paciente_edad" type="number" placeholder="Edad">
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <mat-label>Estado Civil</mat-label>
+      <mat-select [(ngModel)]="paciente.paciente_edo_civil">
+        <mat-option *ngFor="let edociv of edocivil" [value]="edociv.edocivil_id">
+          {{edociv.edocivil_descrip}}
+        </mat-option>
+      </mat-select>
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="paciente.paciente_telefono" type="number" placeholder="Telefono o celular">
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="paciente.paciente_telefono_eme" type="number" placeholder="Telefono en caso de emergencia">
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <mat-label>Escolaridad</mat-label>
+    <mat-select [(ngModel)]="paciente.paciente_escolaridad">
+      <mat-option *ngFor="let esc of catescolar" [value]="esc.escolar_id">
+        {{esc.escolar_descrip}}
+      </mat-option>
+    </mat-select>
+</mat-form-field><br>
+
+<mat-form-field>
+  <mat-label>Estado de nacimiento</mat-label>
+  <mat-select [(ngModel)]="paciente.paciente_edo_nac" (selectionChange)="Municipios($event.value)" >
+    <mat-option *ngFor="let est of estados" [value]="est.cve_edo">
+      {{est.desc_edo}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+<!-- (change)="Municipios($event.value)" -->
+<mat-form-field>
+  <mat-label>Municipio de nacimiento</mat-label>
+  <mat-select [(ngModel)]="paciente.paciente_mun_nac">
+    <mat-option *ngFor="let mpo of mun" [value]="mpo.cve_mun">
+      {{mpo.desc_mun}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+<mat-form-field>
+  <mat-label>Estado de residencia</mat-label>
+  <mat-select [(ngModel)]="paciente.paciente_edo_res" (selectionChange)="MunicipiosRes($event.value)" >
+    <mat-option *ngFor="let estado of estados" [value]="estado.cve_edo">
+      {{estado.desc_edo}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+<!-- (change)="Municipios($event.value)" -->
+<mat-form-field>
+  <mat-label>Municipio de residencia</mat-label>
+  <mat-select [(ngModel)]="paciente.paciente_mun_res">
+    <mat-option *ngFor="let mpio of munres" [value]="mpio.cve_mun">
+      {{mpio.desc_mun}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+<mat-form-field>
+  <mat-label>Modalidad</mat-label>
+  <mat-select [(ngModel)]="paciente.paciente_modalidad">
+    <mat-option *ngFor="let mod of modalidad" [value]="mod.modalidad_id">
+      {{mod.modalidad_descrip}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+<mat-form-field>
+  <mat-label>Estatus</mat-label>
+  <mat-select [(ngModel)]="paciente.paciente_estatus">
+    <mat-option *ngFor="let est of estatus" [value]="est.estatus_id">
+      {{est.estatus_descrip}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" (click)="ActualizaPaciente(paciente)">Actualizar Paciente</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancelar</button>
+</div>
+

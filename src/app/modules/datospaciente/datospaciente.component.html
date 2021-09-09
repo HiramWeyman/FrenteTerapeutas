@@ -1,0 +1,247 @@
+<block-ui>
+    <link rel="stylesheet" href="../../../assets/css/login.css">
+    
+
+   <form class="row" [formGroup]="forma" (ngSubmit)="Guardar()" (keydown.enter)="$event.preventDefault()">
+    <div class="alert alert-dark" role="alert">
+        <h3>Registro de Paciente</h3>
+
+        <ng-container>
+         
+    
+            <div class="mb-3">
+                <label for="aspi_nombre" class="form-label">Nombre:</label><br>
+                <small *ngIf="NombreNovalido" class="text-danger" style="color: red;">
+                    Ingrese nombre
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="50" 
+                formControlName="paciente_nombre" 
+                autocomplete="off" 
+                [class.is-invalid]="NombreNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="paciente_direccion" class="form-label">Dirección o Domicilio:</label><br>
+                <small *ngIf="DireccionNovalido" class="text-danger" style="color: red;">
+                    Ingrese dirección o domicilio
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="100" 
+                formControlName="paciente_direccion" 
+                autocomplete="off" 
+                [class.is-invalid]="DireccionNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="paciente_ocupacion" class="form-label">Ocupación:</label><br>
+                <small *ngIf="OcupacionNovalido" class="text-danger" style="color: red;">
+                    Ingrese Ocupación
+                </small>
+                <input type="text" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="30" 
+                formControlName="paciente_ocupacion" 
+                autocomplete="off" 
+                [class.is-invalid]="OcupacionNovalido"
+                oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="mb-3">
+                <label for="paciente_fec_nac" class="form-label">Fecha de nacimiento:</label><br>
+                <small *ngIf="FnacNovalido" class="text-danger" style="color: red;">
+                    Ingrese una fecha de nacimiento
+                </small>
+                <input type="date" 
+                class="form-control" 
+                style="width: 70%"
+                formControlName="paciente_fec_nac"
+                [class.is-invalid]="FnacNovalido"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="paciente_fec_ing" class="form-label">Fecha de ingreso:</label><br>
+                <small *ngIf="FingNovalido" class="text-danger" style="color: red;">
+                    Ingrese una ingreso 
+                </small>
+                <input type="date" 
+                class="form-control" 
+                style="width: 70%"
+                formControlName="paciente_fec_ing"
+                [class.is-invalid]="FingNovalido"
+                >
+            </div>
+            <div class="mb-3">
+                <label for="paciente_sexo" class="form-label">Género:</label><br><br>
+                <div class="form-check">
+                    <small *ngIf="GeneroNovalido" class="text-danger" style="color: red;">
+                        Seleccione una opción
+                    </small>
+                    <input class="form-check-input" type="radio" name="paciente_sexo" id="paciente_sexo1" formControlName="paciente_sexo" value="1" [class.is-invalid]="GeneroNovalido">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Masculino
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paciente_sexo" id="paciente_sexo2"  formControlName="paciente_sexo" value="2" [class.is-invalid]="GeneroNovalido">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Femenino
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paciente_sexo" id="paciente_sexo4"  formControlName="paciente_sexo" value="4" [class.is-invalid]="GeneroNovalido">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      No binario
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paciente_sexo" id="paciente_sexo3"  formControlName="paciente_sexo" value="3" [class.is-invalid]="GeneroNovalido">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      No deseo manifestar
+                    </label>
+                  </div>
+            </div><br>
+         
+            <div class="mb-3">
+                <label for="aspi_paterno" class="form-label">Edad:</label><br>
+                <small *ngIf="EdadNovalido" class="text-danger" style="color: red;">
+                    Ingrese edad
+                </small>
+                <input type="number" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="30" 
+                formControlName="paciente_edad" 
+                autocomplete="off" 
+                [class.is-invalid]="EdadNovalido"
+                >
+            </div>
+        
+            <div class="mb-3">
+                <label for="aspi_ecivil" class="form-label">Estado civil:</label><br>
+                <small *ngIf="CivilNovalido" class="text-danger" style="color: red;">
+                    Ingrese un estado civil
+                </small> 
+                <select id="paciente_edo_civil" class="form-control" formControlName="paciente_edo_civil" [class.is-invalid]="CivilNovalido">
+                    <option selected="selected" value="">-- Seleccione Estado Civil --</option>
+                    <option *ngFor="let ec of edocivil" value="{{ ec.edocivil_id}}">{{ec.edocivil_descrip}}</option>
+                </select>
+            </div>
+   
+       
+      
+            <div class="mb-3">
+                <label for="aspi_telcasa" class="form-label">Telefono celular o de casa:</label><br>
+                <small *ngIf="TelCelNovalido" class="text-danger" style="color: red;">
+                    Ingrese un telefono
+                </small>
+                <input type="number" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="15" 
+                formControlName="paciente_telefono" 
+                autocomplete="off"                
+                [class.is-invalid]="TelCelNovalido">
+            </div>
+
+
+            <div class="mb-3">
+                <label for="aspi_telcasa" class="form-label">Telefono de emergencia:</label><br>
+                <input type="number" 
+                class="form-control" 
+                style="width: 70%"
+                maxlength="15" 
+                formControlName="paciente_telefono_eme" 
+                autocomplete="off"                
+               >
+            </div>
+       
+            <div class="mb-3">
+                <label for="aspi_escolaridad" class="form-label">Escolaridad:</label><br>
+                <small *ngIf="EscolarNovalido" class="text-danger" style="color: red;">
+                    Ingrese una escolaridad
+                </small>
+                <select id="paciente_escolaridad" class="form-control" formControlName="paciente_escolaridad" [class.is-invalid]="EscolarNovalido">
+                    <option selected="selected" value="">-- Seleccione Escolaridad --</option>
+                    <option *ngFor="let cat of catescolar" value="{{ cat.escolar_id}}">{{cat.escolar_descrip}}</option>
+                </select>
+                
+            </div>
+       
+            <div class="mb-3">
+                <label for="paciente_edo_nac" class="form-label">Estado de nacimiento:</label><br>
+                <small *ngIf="EdoNacNovalido" class="text-danger" style="color: red;">
+                    Ingrese un estado
+                </small>
+                <select id="paciente_edo_nac" class="form-control" formControlName="paciente_edo_nac" (change)="Municipios($event.target.value)" [class.is-invalid]="EdoNacNovalido">
+                    <option selected="selected" value="">-- Seleccione un estado-</option>
+                    <option *ngFor="let edonac of estados" value="{{ edonac.cve_edo}}">{{edonac.desc_edo}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="paciente_mun_nac" class="form-label">Municipio de nacimiento:</label><br>
+                <small *ngIf="MunNacNovalido" class="text-danger" style="color: red;">
+                    Ingrese un municipio
+                </small>
+                <select id="paciente_mun_nac" class="form-control" formControlName="paciente_mun_nac" [class.is-invalid]="MunNacNovalido">
+                    <option selected="selected" value="">-- Seleccione un municipio-</option>
+                    <option *ngFor="let munnac of mun" value="{{ munnac.cve_mun}}">{{munnac.desc_mun}}</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="paciente_edo_nac" class="form-label">Estado de residencia:</label><br>
+                <small *ngIf="EdoResNovalido" class="text-danger" style="color: red;">
+                    Ingrese un estado
+                </small>
+                <select id="paciente_edo_res" class="form-control" formControlName="paciente_edo_res" (change)="MunicipiosRes($event.target.value)" [class.is-invalid]="EdoResNovalido">
+                    <option selected="selected" value="">-- Seleccione un estado-</option>
+                    <option *ngFor="let edonac of estados" value="{{ edonac.cve_edo}}">{{edonac.desc_edo}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="paciente_mun_res" class="form-label">Municipio de residencia:</label><br>
+                <small *ngIf="MunResNovalido" class="text-danger" style="color: red;">
+                    Ingrese un municipio
+                </small>
+                <select id="paciente_mun_res" class="form-control" formControlName="paciente_mun_res" [class.is-invalid]="MunResNovalido">
+                    <option selected="selected" value="">-- Seleccione un municipio-</option>
+                    <option *ngFor="let munr of munres" value="{{ munr.cve_mun}}">{{munr.desc_mun}}</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="paciente_modalidad" class="form-label">Modalidad:</label><br>
+                <small *ngIf="ModalidadNovalido" class="text-danger" style="color: red;">
+                    Ingrese una modalidad
+                </small>
+                <select id="paciente_modalidad" class="form-control" formControlName="paciente_modalidad" [class.is-invalid]="ModalidadNovalido">
+                    <option selected="selected" value="">-- Seleccione una modalidad --</option>
+                    <option *ngFor="let mod of modalidad" value="{{ mod.modalidad_id}}">{{mod.modalidad_descrip}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="paciente_estatus" class="form-label">Estatus:</label><br>
+                <small *ngIf="EstatusNovalido" class="text-danger" style="color: red;">
+                    Ingrese un estatus
+                </small>
+                <select id="paciente_estatus" class="form-control" formControlName="paciente_estatus" [class.is-invalid]="EstatusNovalido">
+                    <option selected="selected" value="">-- Seleccione estatus --</option>
+                    <option *ngFor="let est of estatus" value="{{ est.estatus_id}}">{{est.estatus_descrip}}</option>
+                </select>
+            </div>
+        </ng-container>
+        <ng-container >
+            <div style="text-align: center">
+                <button class="btn btn-blue small" [disabled]="!forma.valid">Registrar Paciente</button>
+            </div>
+        </ng-container><br><br>
+    </div>
+        
+   </form>
+    </block-ui>

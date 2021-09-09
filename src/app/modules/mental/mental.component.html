@@ -1,0 +1,63 @@
+<div class="row text-center">
+    <h2 mat-dialog-title>Estado Mental</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+ 
+    <mat-form-field>
+        <mat-label>1.Estado de conciencia</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_conciencia"></textarea>
+    </mat-form-field><br>
+  
+    <mat-form-field>
+        <mat-label>2.Orientación, tiempo, espacio</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_orientacion"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>3.Afectividad y estado de ánimo.</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estadoafectividad"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>4.Asociaciones y pensamiento</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_asociaciones"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>5.Contenido del pensamiento </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_pensamiento"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>6.Percepción</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_percepcion"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>7.Funcionamiento sintético-integrativo </mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_funcionamiento"></textarea>
+    </mat-form-field><br>
+    
+    <mat-form-field>
+        <mat-label>8.Juicio</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_juicio"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>9.Insight</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_insight"></textarea>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>10.Madurez</mat-label>
+        <textarea  matInput rows="3" cols="40"  [(ngModel)]="pac_mental.pac_estado_madurez"></textarea>
+    </mat-form-field><br>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button  mat-flat-button color="primary" *ngIf="!pac_mental.pac_estado_id" (click)="GuardaMental(pac_mental)">Guardar Estado Mental</button>
+    <button mat-button  mat-flat-button color="primary" *ngIf="pac_mental.pac_estado_id" (click)="ActualizaMental(pac_mental.pac_estado_id,pac_mental)">Actualizar Estado Mental</button>
+    <button mat-button  mat-flat-button color="warn" *ngIf="pac_mental.pac_estado_id" (click)="EliminaMental(pac_mental.pac_estado_id,pac_mental)">Eliminar Estado Mental</button>
+    <button mat-button  routerLink="/pacientes">Cancelar</button>
+</div><br><br>

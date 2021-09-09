@@ -1,0 +1,62 @@
+
+
+<block-ui>
+    <h3>Pagos de {{ this.desc }}</h3>
+
+    <button type="button" class="btn btn-blue" (click)="openDialog()">Agregar Pago</button>
+    <button type="button" class="btn btn-secondary btn-sm" routerLink="/tablaaspi">Regresar</button>
+    
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Banco</th>
+                <th>F. Pago</th>
+                <th>Monto a pagar</th>
+                <th>Monto pagado</th>
+                <th>Ticket</th>
+                <th>Referencia</th>
+                <th>Recibo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of this.pagos | paginate: { itemsPerPage: 4, currentPage: p }">
+                <td>
+                    <button mat-button (click)='delete(p.vpag_folpago);'>
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </td>
+                <td data-label="ID">{{ p.vpag_folpago }}</td>
+                <td data-label="Descripción">{{ p.vpag_pagodescrip }}</td>
+                <td data-label="Banco">{{ p.vpag_banco }}</td>
+                <td data-label="F. Pago">{{ p.vpag_fpago | date:"dd/MM/yyyy" }}</td>
+                <td data-label="Monto">{{ p.vpag_impte_apagar | currency:"MXN":"symbol" }}</td>
+                <td data-label="Monto">{{ p.vpag_monto | currency:"MXN":"symbol" }}</td>
+                <td data-label="Ticket">{{ p.vpag_ticket }}</td>
+                <td data-label="Referencia">{{ p.vpag_referencia }}</td>
+                <td>
+                    <button  *ngIf="p.vpag_comprobanteHashCode"class="btn btn-sm" (click)="getImageFromService(urlEndPoint + '/dvpagos/img/' + p.vpag_folpago, p.vpag_type);">
+                        <mat-icon>receipt</mat-icon>
+                    </button>
+                    <button *ngIf="!p.vpag_comprobanteHashCode" class="btn btn-green btn-sm" (click)="openUpload(p.vpag_folpago)">
+                        Subir Recibo
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <span class="example-spacer"></span>
+    
+    <div style="text-align: center;">
+        <pagination-controls 
+            (pageChange)="p = $event"
+            responsive="true"
+            previousLabel="Anterior"
+            nextLabel="Siguiente">
+        </pagination-controls>
+    </div>
+     
+    </block-ui>
